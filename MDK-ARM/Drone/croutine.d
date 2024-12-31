@@ -1,0 +1,13 @@
+drone\croutine.o: ..\Mid\FreeRTOS\Source\croutine.c
+drone\croutine.o: ../Mid/FreeRTOS/Include/FreeRTOS.h
+drone\croutine.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+drone\croutine.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+drone\croutine.o: ../Mid/FreeRTOS/FreeRTOSConfig.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/projdefs.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/portable.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/deprecated_definitions.h
+drone\croutine.o: ../Mid/FreeRTOS/Portable/portmacro.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/mpu_wrappers.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/task.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/list.h
+drone\croutine.o: ../Mid/FreeRTOS/Include/croutine.h

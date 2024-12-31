@@ -1,0 +1,15 @@
+drone\event_groups.o: ..\Mid\FreeRTOS\Source\event_groups.c
+drone\event_groups.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/FreeRTOS.h
+drone\event_groups.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+drone\event_groups.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+drone\event_groups.o: ../Mid/FreeRTOS/FreeRTOSConfig.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/projdefs.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/portable.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/deprecated_definitions.h
+drone\event_groups.o: ../Mid/FreeRTOS/Portable/portmacro.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/mpu_wrappers.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/task.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/list.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/timers.h
+drone\event_groups.o: ../Mid/FreeRTOS/Include/event_groups.h

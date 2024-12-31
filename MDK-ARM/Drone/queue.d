@@ -1,0 +1,15 @@
+drone\queue.o: ..\Mid\FreeRTOS\Source\queue.c
+drone\queue.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+drone\queue.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+drone\queue.o: ../Mid/FreeRTOS/Include/FreeRTOS.h
+drone\queue.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+drone\queue.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+drone\queue.o: ../Mid/FreeRTOS/FreeRTOSConfig.h
+drone\queue.o: ../Mid/FreeRTOS/Include/projdefs.h
+drone\queue.o: ../Mid/FreeRTOS/Include/portable.h
+drone\queue.o: ../Mid/FreeRTOS/Include/deprecated_definitions.h
+drone\queue.o: ../Mid/FreeRTOS/Portable/portmacro.h
+drone\queue.o: ../Mid/FreeRTOS/Include/mpu_wrappers.h
+drone\queue.o: ../Mid/FreeRTOS/Include/task.h
+drone\queue.o: ../Mid/FreeRTOS/Include/list.h
+drone\queue.o: ../Mid/FreeRTOS/Include/queue.h

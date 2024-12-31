@@ -1,0 +1,12 @@
+drone\port.o: ..\Mid\FreeRTOS\Portable\port.c
+drone\port.o: ../Mid/FreeRTOS/Include/FreeRTOS.h
+drone\port.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+drone\port.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+drone\port.o: ../Mid/FreeRTOS/FreeRTOSConfig.h
+drone\port.o: ../Mid/FreeRTOS/Include/projdefs.h
+drone\port.o: ../Mid/FreeRTOS/Include/portable.h
+drone\port.o: ../Mid/FreeRTOS/Include/deprecated_definitions.h
+drone\port.o: ../Mid/FreeRTOS/Portable/portmacro.h
+drone\port.o: ../Mid/FreeRTOS/Include/mpu_wrappers.h
+drone\port.o: ../Mid/FreeRTOS/Include/task.h
+drone\port.o: ../Mid/FreeRTOS/Include/list.h

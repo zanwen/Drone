@@ -1,0 +1,10 @@
+drone\com_delay.o: ..\Com\Com_Delay.c
+drone\com_delay.o: ..\Com\Com_Delay.h
+drone\com_delay.o: D:\Keil_v5\ARM\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
+drone\com_delay.o: .\RTE\_Drone\RTE_Components.h
+drone\com_delay.o: ../Drivers/CMSIS/Include/core_cm3.h
+drone\com_delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+drone\com_delay.o: ../Drivers/CMSIS/Include/cmsis_version.h
+drone\com_delay.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+drone\com_delay.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+drone\com_delay.o: D:\Keil_v5\ARM\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h

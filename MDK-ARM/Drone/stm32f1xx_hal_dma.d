@@ -27,6 +27,7 @@ drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_fla
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 drone\stm32f1xx_hal_dma.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h

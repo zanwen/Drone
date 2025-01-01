@@ -31,9 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Com_Logger.h"
-#include "App_Flight.h"
-#include "Int_MPU6050.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -59,10 +57,18 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SI24R1_CSN_Pin GPIO_PIN_4
+#define SI24R1_CSN_GPIO_Port GPIOA
+#define POWER_KEY_Pin GPIO_PIN_2
+#define POWER_KEY_GPIO_Port GPIOB
 #define LED4_Pin GPIO_PIN_14
 #define LED4_GPIO_Port GPIOB
 #define LED3_Pin GPIO_PIN_15
 #define LED3_GPIO_Port GPIOB
+#define SI24R1_CE_Pin GPIO_PIN_8
+#define SI24R1_CE_GPIO_Port GPIOA
+#define SI24R1_IRQ_Pin GPIO_PIN_9
+#define SI24R1_IRQ_GPIO_Port GPIOA
 #define LED2_Pin GPIO_PIN_11
 #define LED2_GPIO_Port GPIOA
 #define LED1_Pin GPIO_PIN_12

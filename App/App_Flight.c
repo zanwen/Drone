@@ -3,16 +3,18 @@
 #include "Com_Logger.h"
 #include "Int_LED.h"
 #include "main.h"
+#include "Com_IMU.h"
+#include "Int_MPU6050.h"
 
 #define BAT_VOLTAGE_THRESHOLD 4000
 
-extern uint16_t batteryAdcValue;
-
-static float batteryVoltage = BAT_VOLTAGE_THRESHOLD;
 
 PilotLEDState ledState = {1000, AlwaysOn};
-static MPU6050Data mpu6050 = {0};
-static MPU6050Data mpuCalibrationOffset = {0}; // MPU校准偏移量
+MPU6050Data mpu6050 = {0};
+FlightAngle flightAngle = {0};
+
+static float batteryVoltage = BAT_VOLTAGE_THRESHOLD;
+static MPU6050Data mpuCalibrationBias = {0}; // MPU校准偏移量
 
 void App_Flight_DetectBatVoltage(void) {
     // Low pass filter for battery voltage calculation
@@ -45,26 +47,26 @@ void App_Flight_MPUCalibrate(void) {
     }
 
     /* 计算零偏校准偏移量 */
-    // 忽略前100次，取后256次的数据的平均值
-    int32_t offSetSum[6] = {0};
+    // 忽略前100次（掐头去尾取平均值），取后256次的数据的平均值
+    int32_t biasSum[6] = {0};
     for (uint16_t i = 0; i < 356; i++) {
         App_Flight_FetchMPUData();
         if (i >= 100) {
-            offSetSum[0] += mpu6050.accelX;
-            offSetSum[1] += mpu6050.accelY;
-            offSetSum[2] += mpu6050.accelZ - 16383; // 重力加速度 1g=>16383
-            offSetSum[3] += mpu6050.gyroX;
-            offSetSum[4] += mpu6050.gyroY;
-            offSetSum[5] += mpu6050.gyroZ;
+            biasSum[0] += mpu6050.accelX;
+            biasSum[1] += mpu6050.accelY;
+            biasSum[2] += mpu6050.accelZ - 16383; // 重力加速度 1g=>16383
+            biasSum[3] += mpu6050.gyroX;
+            biasSum[4] += mpu6050.gyroY;
+            biasSum[5] += mpu6050.gyroZ;
         }
     }
     // 取平均值 >>8就是除以256
-    mpuCalibrationOffset.accelX = offSetSum[0] >> 8;
-    mpuCalibrationOffset.accelY = offSetSum[1] >> 8;
-    mpuCalibrationOffset.accelZ = offSetSum[2] >> 8;
-    mpuCalibrationOffset.gyroX = offSetSum[3] >> 8;
-    mpuCalibrationOffset.gyroY = offSetSum[4] >> 8;
-    mpuCalibrationOffset.gyroZ = offSetSum[5] >> 8;
+    mpuCalibrationBias.accelX = biasSum[0] >> 8;
+    mpuCalibrationBias.accelY = biasSum[1] >> 8;
+    mpuCalibrationBias.accelZ = biasSum[2] >> 8;
+    mpuCalibrationBias.gyroX = biasSum[3] >> 8;
+    mpuCalibrationBias.gyroY = biasSum[4] >> 8;
+    mpuCalibrationBias.gyroZ = biasSum[5] >> 8;
 }
 
 /**
@@ -74,15 +76,15 @@ void App_Flight_MPUCalibrate(void) {
 void App_Flight_FetchMPUData(void) {
     Int_MPU6050_ReadAccel(&mpu6050.accelX, &mpu6050.accelY, &mpu6050.accelZ);
     Int_MPU6050_ReadGyro(&mpu6050.gyroX, &mpu6050.gyroY, &mpu6050.gyroZ);
-    LOG_DEBUG("Before Filter => Accel X: %d, Y: %d, Z: %d, Gyro X: %d, Y:%d, Z: %d", mpu6050.accelX,
-              mpu6050.accelY, mpu6050.accelZ, mpu6050.gyroX, mpu6050.gyroY, mpu6050.gyroZ);
+    // LOG_DEBUG("Before Filter => Accel X: %d, Y: %d, Z: %d, Gyro X: %d, Y:%d, Z: %d", mpu6050.accelX,
+    //           mpu6050.accelY, mpu6050.accelZ, mpu6050.gyroX, mpu6050.gyroY, mpu6050.gyroZ);
     // 零偏校准
-    mpu6050.accelX = mpu6050.accelX - mpuCalibrationOffset.accelX;
-    mpu6050.accelY = mpu6050.accelY - mpuCalibrationOffset.accelY;
-    mpu6050.accelZ = mpu6050.accelZ - mpuCalibrationOffset.accelZ;
-    mpu6050.gyroX = mpu6050.gyroX - mpuCalibrationOffset.gyroX;
-    mpu6050.gyroY = mpu6050.gyroY - mpuCalibrationOffset.gyroY;
-    mpu6050.gyroZ = mpu6050.gyroZ - mpuCalibrationOffset.gyroZ;
+    mpu6050.accelX = mpu6050.accelX - mpuCalibrationBias.accelX;
+    mpu6050.accelY = mpu6050.accelY - mpuCalibrationBias.accelY;
+    mpu6050.accelZ = mpu6050.accelZ - mpuCalibrationBias.accelZ;
+    mpu6050.gyroX = mpu6050.gyroX - mpuCalibrationBias.gyroX;
+    mpu6050.gyroY = mpu6050.gyroY - mpuCalibrationBias.gyroY;
+    mpu6050.gyroZ = mpu6050.gyroZ - mpuCalibrationBias.gyroZ;
 
     /* 对加速度计进行一阶卡尔曼滤波 */
     // 加速度数据通常包含多种噪声源，包括环境振动、电气噪声和传感器本身的误差
@@ -105,8 +107,8 @@ void App_Flight_FetchMPUData(void) {
     mpu6050.gyroZ = lastGyro[2] * 0.85 + mpu6050.gyroZ * 0.15;
     lastGyro[2] = mpu6050.gyroZ;
 
-    LOG_DEBUG("After Filter => Accel X: %d, Y: %d, Z: %d, Gyro X: %d, Y:%d, Z: %d", mpu6050.accelX,
-              mpu6050.accelY, mpu6050.accelZ, mpu6050.gyroX, mpu6050.gyroY, mpu6050.gyroZ);
+    // LOG_DEBUG("After Filter => Accel X: %d, Y: %d, Z: %d, Gyro X: %d, Y:%d, Z: %d", mpu6050.accelX,
+    //           mpu6050.accelY, mpu6050.accelZ, mpu6050.gyroX, mpu6050.gyroY, mpu6050.gyroZ);
 }
 
 void App_Flight_PilotLED(void) {

@@ -29,13 +29,7 @@ drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 drone\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-drone\gpio.o: ../Com/Com_Logger.h
-drone\gpio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-drone\gpio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-drone\gpio.o: ../App/App_Flight.h
-drone\gpio.o: ../Int/Int_MPU6050.h
-drone\gpio.o: ../Core/Inc/main.h
-drone\gpio.o: ../Core/Inc/i2c.h

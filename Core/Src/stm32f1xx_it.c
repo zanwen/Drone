@@ -189,7 +189,11 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-    // xTaskIncrementTick();
+    if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
+    {
+        xTaskIncrementTick();
+    }
+    
   /* USER CODE END SysTick_IRQn 1 */
 }
 

@@ -8,7 +8,12 @@
         "int_led.h": "c",
         "app_flight.h": "c",
         "int_mpu6050.h": "c",
-        "com_kalman.h": "c"
+        "com_kalman.h": "c",
+        "com_imu.h": "c",
+        "int_si24r1.h": "c",
+        "spi.h": "c",
+        "functional": "c",
+        "algorithm": "c"
     },
     "C_Cpp.default.compilerPath": ""
 }

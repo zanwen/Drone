@@ -21,13 +21,19 @@
 #include "adc.h"
 #include "dma.h"
 #include "i2c.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "App_Flight.h"
+#include "Com_IMU.h"
+#include "Com_Logger.h"
+#include "Int_MPU6050.h"
+#include "Int_Si24R1.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,9 +105,11 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_I2C1_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
     Int_MPU6050_Init();
     App_Flight_MPUCalibrate();
+
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // LEFT-0
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT-0
     HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT-1
@@ -117,14 +125,33 @@ int main(void)
     // __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 50);
     // LOG_DEBUG("PWM set done");
 
+    // HAL_Delay(1000);
+    Int_SI24R1_Check();
+    Int_SI24R1_InitRxMode();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     ledState.state = WARNING;
+    RemoteControlPacket_t packet;
     while (1) {
-        App_Flight_FetchMPUData();
+        HAL_GPIO_TogglePin(POWER_KEY_GPIO_Port, POWER_KEY_Pin);
+        // strcpy(buf, "Hello, world!");
+        // Int_SI24R1_TxPacket(buf);
+        // HAL_Delay(500);
+
+        if (Int_SI24R1_RxPacket((uint8_t *)&packet) == 0) {
+            LOG_DEBUG("THR: %d, YAW: %d, PIT: %d, ROL: %d", packet.data.THR, packet.data.YAW,
+                      packet.data.PIT, packet.data.ROL);
+        }
         HAL_Delay(100);
+
+        // App_Flight_FetchMPUData();
+        // GetAngle(&mpu6050, &flightAngle, 0.006);
+        // LOG_DEBUG("pitch: %.1fdeg, roll: %.1fdeg, yaw: %.1fdeg", flightAngle.pitch,
+        //           flightAngle.roll, flightAngle.yaw);
+        // HAL_Delay(6);
 
         // float batteryVoltage = batteryAdcValue * 3.3 / 4096 * 2;
         // LOG_DEBUG("Battery voltage: %.2fV", batteryVoltage);

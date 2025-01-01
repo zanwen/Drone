@@ -29,13 +29,7 @@ drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 drone\i2c.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-drone\i2c.o: ../Com/Com_Logger.h
-drone\i2c.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-drone\i2c.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-drone\i2c.o: ../App/App_Flight.h
-drone\i2c.o: ../Int/Int_MPU6050.h
-drone\i2c.o: ../Core/Inc/main.h
-drone\i2c.o: ../Core/Inc/i2c.h

@@ -33,3 +33,12 @@ drone\int_ip5305t.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 drone\int_ip5305t.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 drone\int_ip5305t.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 drone\int_ip5305t.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/FreeRTOS.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/FreeRTOSConfig.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/projdefs.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/portable.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/deprecated_definitions.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Portable/portmacro.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/mpu_wrappers.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/task.h
+drone\int_ip5305t.o: ../Mid/FreeRTOS/Include/list.h

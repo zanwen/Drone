@@ -77,8 +77,8 @@ NVIC value of 255. */
 #define configLIBRARY_KERNEL_INTERRUPT_PRIORITY 15
 
 /* 添加必须的宏 */
-// #define xPortPendSVHandler PendSV_Handler
-// #define vPortSVCHandler SVC_Handler
+#define xPortPendSVHandler PendSV_Handler
+#define vPortSVCHandler SVC_Handler
 #define INCLUDE_xTaskGetSchedulerState 1
 
 /* 开启动态分配 */

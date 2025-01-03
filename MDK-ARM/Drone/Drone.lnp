@@ -43,10 +43,12 @@
 "drone\int_si24r1.o"
 "drone\int_ip5305t.o"
 "drone\app_flight.o"
+"drone\app_task.o"
 "drone\com_delay.o"
 "drone\com_logger.o"
 "drone\com_kalman.o"
 "drone\com_imu.o"
+"drone\com_pid.o"
 --library_type=microlib --strict --scatter "Drone\Drone.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

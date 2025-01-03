@@ -48,6 +48,12 @@ typedef struct {
     uint32_t checkSum;
 } RemoteControlPacket_t;
 
+typedef enum {
+    STAGE1,
+    STAGE2,
+    STAGE3,
+    PROCESSING
+} Stage_t;
 
 
 extern uint16_t batteryAdcValue;
@@ -64,5 +70,13 @@ void App_Flight_MPUCalibrate(void);
 void App_Flight_FetchMPUData(void);
 
 void App_Flight_PilotLED(void);
+
+void App_Flight_RxRCDATA(void);
+
+void App_Flight_RCUnlock(void);
+
+void App_Flight_PIDControl(float dt);
+
+void App_Flight_MotorControl(void);
 
 #endif /* __APP_FLIGHT_H__ */

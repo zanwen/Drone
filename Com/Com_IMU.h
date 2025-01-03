@@ -35,6 +35,6 @@ extern _st_IMU IMU;
 extern float GetAccz(void);
 extern void GetAngle(const MPU6050Data *pMpu, FlightAngle *pAngE, float dt);
 extern MPUDA Gravity, Acc, Gyro, AccGravity;
-
+extern const float Gyro_G;
 
 #endif /* __COM_IMU_H__ */

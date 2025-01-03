@@ -1057,6 +1057,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\App_Flight.c</FilePath>
             </File>
+            <File>
+              <FileName>App_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\App_Task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1081,6 +1086,11 @@
               <FileName>Com_IMU.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Com\Com_IMU.c</FilePath>
+            </File>
+            <File>
+              <FileName>Com_PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Com\Com_PID.c</FilePath>
             </File>
           </Files>
         </Group>
